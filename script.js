@@ -5,9 +5,9 @@ var items = document.getElementById('items');
 items.style.fontWeight = "solid";
 items.style.color = "green";
 
-console.log('test');
+var list = document.getElementsByClassName("list-group-item list-group-item");
+list[2].style.backgroundColor = "lightgreen";
 
-// this should come as I'm selecting this file
-// this is new
-
-// this should go to the new branch
+for(let i of list){
+    i.style.fontWeight = "bold";
+}
