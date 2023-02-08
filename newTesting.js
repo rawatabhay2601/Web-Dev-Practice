@@ -1,1 +1,1 @@
-console.log("Trying to make new branch and upload these chnages");
+console.log("Trying to upload these changes");
