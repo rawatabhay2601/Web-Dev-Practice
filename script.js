@@ -11,3 +11,10 @@ item[2].style.backgroundColor = 'lightgreen';
 for(let i of item){
     i.style.fontWeight = "bold";
 }
+
+var newItems = document.getElementsByTagName('li');
+
+for(let i of newItems){
+    i.style.fontStyle = "italic";
+    i.style.fontWeight = "bold";
+}
