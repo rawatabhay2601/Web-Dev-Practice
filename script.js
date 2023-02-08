@@ -36,4 +36,10 @@ for(i=0; i<query.length;i += 2){
     query[i].style.backgroundColor = "green";
 }
 
-console.log(query.length);
+console.log(query);
+
+// ask doubt as last-child is not working here(rest are working)
+var query = document.querySelector
+('.list-group-item:first-child');
+
+query.style.color = 'red';
