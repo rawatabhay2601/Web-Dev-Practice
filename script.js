@@ -6,4 +6,6 @@ items.style.fontWeight = "solid";
 items.style.color = "green";
 
 console.log('test');
+
 // this should come as I'm selecting this file
+// this is new
