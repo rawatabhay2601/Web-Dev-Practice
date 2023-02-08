@@ -6,4 +6,4 @@ items.style.fontWeight = "solid";
 items.style.color = "green";
 
 console.log('test');
-// this should not come as I'm not selecting this file
+// this should come as I'm selecting this file
