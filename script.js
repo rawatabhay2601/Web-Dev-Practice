@@ -107,7 +107,22 @@ temp.insertBefore(newDiv,before);
 
 // Adding newDiv tag before List1
 
-var list1 = document.querySelector("ul li");
-var parent = document.querySelector("ul");
+var secDiv = document.createElement("div");
 
-parent.insertBefore(newDiv,list1);
+// Add class
+secDiv.className = 'item';
+
+
+// Using SetAttribute
+secDiv.setAttribute('title','Heelo');
+
+// Creating and adding a text node to newDiv
+var text2 = document.createTextNode('Hello World 2');
+secDiv.appendChild(text2);
+
+var list1 = document.querySelector("ul li");
+var bossTag = document.querySelector("ul");
+
+bossTag.insertBefore(secDiv,list1);
+
+// console.log(newDiv);
