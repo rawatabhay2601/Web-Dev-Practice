@@ -1,5 +1,5 @@
-var header = document.getElementById('main-title');
-header.style.borderBottom = "solid 2px #000";
+// var header = document.getElementById('main-title');
+// header.style.borderBottom = "solid 2px #000";
 
 // var items = document.getElementById('items');
 // items.style.fontWeight = "solid";
@@ -43,86 +43,149 @@ header.style.borderBottom = "solid 2px #000";
 // query.style.color = 'red';
 
 
-// ----------TRAVERSING the DOM--------------------
-var dom = document.querySelector('ul');
+// -----------------------TRAVERSING the DOM------------------------
+// -----------------------------------------------------------------
+// -----------------------------------------------------------------
+// var dom = document.querySelector('ul');
 
-// parentNode and parentElement
-// Both are same
+// // parentNode and parentElement
+// // Both are same
 
-// dom.parentNode.style.background = '#f4f4f4';
-dom.parentElement.style.background = '#f4f4f4';
+// // dom.parentNode.style.background = '#f4f4f4';
+// dom.parentElement.style.background = '#f4f4f4';
 
-// Children and Child Node
-// console.log(dom.children);
-// console.log(childNode);  // this will include "text" space as well
-
-// LastChild and LastElementChild
-// console.log(dom.lastChild); // include "text" space as well 
-// console.log(dom.lastElementChild);
-
-// FirstElementChild and FirstChild
-
-// console.log(dom.firstChild);    // include "text" space as well
-
-// dom.firstElementChild.textContent = 'Hello 1';
+// // Children and Child Node
+// // console.log(dom.children);
+// // console.log(childNode);  // this will include "text" space as well
 
 // // LastChild and LastElementChild
+// // console.log(dom.lastChild); // include "text" space as well 
+// // console.log(dom.lastElementChild);
 
-// console.log(dom.lastChild);    // include "text" space as well
+// // FirstElementChild and FirstChild
 
-// dom.lastElementChild.textContent = 'Hello 4';
+// // console.log(dom.firstChild);    // include "text" space as well
 
-// nextSibling and nextElementSibling
+// // dom.firstElementChild.textContent = 'Hello 1';
 
-// console.log(dom.nextSibling);
-// console.log(dom.nextElementSibling);
+// // // LastChild and LastElementChild
 
-// previousSibling and previousElementSibling
+// // console.log(dom.lastChild);    // include "text" space as well
 
-dom.previousElementSibling.style.color = 'red'
+// // dom.lastElementChild.textContent = 'Hello 4';
 
-//  createElement    setAttribute   createtesxtnode   appendchild
+// // nextSibling and nextElementSibling
 
-var newDiv = document.createElement("div");
+// // console.log(dom.nextSibling);
+// // console.log(dom.nextElementSibling);
 
-// Add class
-newDiv.className = 'item';
+// // previousSibling and previousElementSibling
 
-// Add id
-newDiv.id = 'items';
+// dom.previousElementSibling.style.color = 'red'
 
-// Using SetAttribute
-newDiv.setAttribute('title','Hello');
+// //  createElement    setAttribute   createtesxtnode   appendchild
 
-// Creating and adding a text node to newDiv
-var text = document.createTextNode('Hello World 1');
-newDiv.appendChild(text);
+// var newDiv = document.createElement("div");
 
-// Adding newDiv in HTML
-var temp = document.querySelector('header');
+// // Add class
+// newDiv.className = 'item';
 
-var before = document.querySelector('#main-title #header-title');
+// // Add id
+// newDiv.id = 'items';
 
-temp.insertBefore(newDiv,before);
+// // Using SetAttribute
+// newDiv.setAttribute('title','Hello');
 
-// Adding newDiv tag before List1
+// // Creating and adding a text node to newDiv
+// var text = document.createTextNode('Hello World 1');
+// newDiv.appendChild(text);
 
-var secDiv = document.createElement("div");
+// // Adding newDiv in HTML
+// var temp = document.querySelector('header');
 
-// Add class
-secDiv.className = 'item';
+// var before = document.querySelector('#main-title #header-title');
+
+// temp.insertBefore(newDiv,before);
+
+// // Adding newDiv tag before List1
+// var secDiv = document.createElement("div");
+
+// // Add class
+// secDiv.className = 'item';
+
+// // Using SetAttribute
+// secDiv.setAttribute('title','Heelo');
+
+// // Creating and adding a text node to newDiv
+// var text2 = document.createTextNode('Hello World 2');
+// secDiv.appendChild(text2);
+
+// var list1 = document.querySelector("ul li");
+// var bossTag = document.querySelector("ul");
+
+// bossTag.insertBefore(secDiv,list1);
+
+// // console.log(newDiv);
 
 
-// Using SetAttribute
-secDiv.setAttribute('title','Heelo');
+// ----------------------------------------------------------------------
+// ----------------------------------------------------------------------
+var addItem = document.getElementById('addForm');
+var items = document.getElementById('items');
+var filter = document.getElementById('filter');
 
-// Creating and adding a text node to newDiv
-var text2 = document.createTextNode('Hello World 2');
-secDiv.appendChild(text2);
+// adding items in list
+addItem.addEventListener('submit',add);
 
-var list1 = document.querySelector("ul li");
-var bossTag = document.querySelector("ul");
+// removing items from the list
+items.addEventListener('click',remove);
 
-bossTag.insertBefore(secDiv,list1);
+// making a filtering search bar
+filter.addEventListener('keyup',filtering);
 
-// console.log(newDiv);
+function add(e){
+    
+    e.preventDefault();
+
+    // creating Tag
+    var addValue = document.getElementById('item').value;
+    var ul = document.getElementById('items');
+    var li = document.createElement('li');
+    li.className = 'list-group-item';
+    li.appendChild(document.createTextNode(addValue));
+    
+    // creating button
+    var btn = document.createElement('button');
+    btn.appendChild(document.createTextNode('X'));
+    btn.className = 'btn btn-danger btn-sm float-right delete';
+    
+    li.appendChild(btn);
+    ul.appendChild(li);
+}
+
+function remove(e){
+    if(e.target.classList.contains('delete')){
+        if(confirm('Are you sure??')){
+            var li = e.target.parentElement;
+            items.removeChild(li);
+        }
+    }
+}
+
+function filtering(e){
+
+    var search = e.target.value.toLowerCase();
+    var items = document.getElementsByTagName('li');
+    
+    // Array.from(items).forEach(function(item){
+    //     var itemName = item.firstChild.textContent;
+    //     if(itemName.toLowerCase().indexOf(search) != -1){
+    //         item.style.display = 'block';
+    //     }
+    //     else{
+    //         item.style.display = 'none';
+    //     }
+    // })
+    var test = 'Hello';
+    console.log(test.indexOf('H'));
+}
